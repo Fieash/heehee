@@ -1,11 +1,6 @@
-ldflags-y += -T$(src)/khook/engine.lds
+KDIR ?= /lib/modules/$(shell uname -r)/build
 
-obj-m += test2.o
-# test2-y += test2.o
-
-all: 
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
-
+all:
+	$(MAKE) -C $(KDIR) M=$$PWD
 clean:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
-
+	$(MAKE) -C $(KDIR) M=$$PWD clean
